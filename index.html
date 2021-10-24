@@ -8,11 +8,23 @@
     <link rel="stylesheet" href="style.css" />
     <title>Wieża Hanoi</title>
   </head>
-  <body onload="generate(9)">
+  <body onload="start(7)">
     <div class="field">
       <div class="tower"></div>
       <div class="tower"></div>
       <div class="tower"></div>
+    </div>
+    <div class="stats-bar">
+      <div class="button" onclick="reset()"><p>Reset</p></div>
+      <div class="button" onclick=""><p>Solution</p></div>
+      <div class="button" onclick="change()"><p>Change</p></div>
+      <input type="number" id="hanoiNum" maxlength="1" />
+
+      <div class="button" onclick="Change"><p>Back</p></div>
+
+      <div class="moves-counter">
+        <p><span id="counter">9/9</span></p>
+      </div>
     </div>
   </body>
 </html>

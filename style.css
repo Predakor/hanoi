@@ -30,3 +30,39 @@ body {
   width: 200px;
   height: 50px;
 }
+
+.stats-bar {
+  width: 80vw;
+  height: 10vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.stats-bar > div {
+  width: 18%;
+  background-color: #003049;
+  font-size: 1.4rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  text-align: center;
+  color: #f48c06;
+  transition: all 0.4s ease-in;
+}
+.stats-bar > .button {
+  margin: 1%;
+  width: 15%;
+  margin-left: 0%;
+  user-select: none;
+}
+.stats-bar > .button:hover {
+  background-color: #003d5d;
+  transition: all 0.3s ease-out;
+}
+.button:nth-child(4) {
+  margin-left: 20%;
+}
+.stats-bar > .button:active {
+  background-color: #002438;
+  transition: all 0.3s ease-out;
+}

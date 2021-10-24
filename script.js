@@ -1,6 +1,4 @@
-tower1 = [0];
-tower2 = [0];
-tower3 = [0];
+const towers = document.getElementsByClassName("tower");
 const colors = [
   "#f72585",
   "#b5179e",
@@ -12,43 +10,80 @@ const colors = [
   "#4895ef",
   "#4cc9f0",
 ];
-let currentBlock;
+let blocks = [];
+let currentBlock, moves, size;
 
-function generate(n) {
-  let startTower = document.getElementsByClassName("tower");
-  let tower = startTower[1];
-  for (let i = 0; i < startTower.length; i++) {
-    startTower[i].addEventListener("mousedown", check);
-  }
+//=================creating section======================//
+function start(n) {
+  currentBlock = 0;
+  moves = 0;
+  for (let i = 0; i < towers.length; i++)
+    towers[i].addEventListener("mousedown", check);
 
-  for (let i = 0; i < n; i++) {
+  generate(n);
+}
+
+function generate(n, start) {
+  start = start || 0;
+  for (let i = start; i < n; i++) {
     let block = document.createElement("div");
     block.className = "block";
     block.style.width = 30 + (n - 1) * i + "%";
     block.style.background = colors[i];
     block.addEventListener("click", grabBlock);
-    startTower[0].appendChild(block);
-    tower1[i] = block;
+    towers[0].appendChild(block);
+    blocks[i] = block;
+  }
+  size = blocks.length;
+}
+
+function reset() {
+  currentBlock = 0;
+  moves = 0;
+  for (let i = 0; i < size; i++) {
+    towers[0].appendChild(blocks[i]);
   }
 }
 
+function change() {
+  num = hanoiNum.value;
+  if (num == size) reset();
+  else if (num < size) {
+    for (let i = num; i < size; i++) {
+      blocks[i].remove();
+    }
+    blocks.splice(num, size - num);
+  } else generate(num, size);
+}
+
+//=================moving section======================//
 function grabBlock() {
-  currentBlock = this;
-  let currentSize = this.style.width;
-  console.log(currentSize);
+  let tower = this.parentElement;
+  if (tower.firstChild == this || tower.firstChild == null) {
+    currentBlock = this;
+  }
 }
 
 function check() {
-  //current block is smaller or tower is empty
-  if (currentBlock.style.width < this.style.width || this.style.width == "") {
-    moveBlock(this);
-  } else {
-    // do nothing
-    console.log("not git");
+  var firstBlock = this.firstChild;
+  if (currentBlock != 0)
+    if (firstBlock == null) moveBlock(this);
+    else if (currentBlock.style.width < firstBlock.style.width) moveBlock(this);
+
+  function moveBlock(target) {
+    target.prepend(currentBlock);
+    moves++;
+    currentBlock = "";
+
+    if (towers[2].childNodes == size) alert("You win");
   }
 }
-function moveBlock(target) {
-  target.prepend(currentBlock);
-  console.log(target);
-  currentBlock = "";
+
+//=================solution section======================//
+function solution() {
+  if (size % 2 == 0) {
+    //algorith 1 AB AC BC Until C tower is complete
+  } else {
+    //algorith 1 AC AB BC Until C tower is complete
+  }
 }
