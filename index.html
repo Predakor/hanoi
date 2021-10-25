@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
+
+    <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Wieża Hanoi</title>
   </head>
-  <body onload="start(7)">
+  <body onload="start(3)">
     <div class="field">
       <div class="tower"></div>
       <div class="tower"></div>
@@ -16,14 +17,21 @@
     </div>
     <div class="stats-bar">
       <div class="button" onclick="reset()"><p>Reset</p></div>
-      <div class="button" onclick=""><p>Solution</p></div>
+      <div class="button" onclick="solution()"><p>Solution</p></div>
       <div class="button" onclick="change()"><p>Change</p></div>
-      <input type="number" id="hanoiNum" maxlength="1" />
+      <input
+        type="number"
+        id="hanoiNum"
+        maxlength="1"
+        max="9"
+        min="1"
+        value="3"
+      />
 
       <div class="button" onclick="Change"><p>Back</p></div>
 
       <div class="moves-counter">
-        <p><span id="counter">9/9</span></p>
+        <p id="counter">0/0</p>
       </div>
     </div>
   </body>
