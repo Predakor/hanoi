@@ -73,7 +73,7 @@ function change() {
 //=================moving section======================//
 function grabBlock() {
   let tower = this.parentElement;
-  if (tower.firstChild == this || tower.firstChild == null) {
+  if (tower.firstChild == this) {
     currentBlock = this;
   }
 }
@@ -99,20 +99,20 @@ function updateMovesCounter() {
 }
 //=================solution section======================//
 function solution() {
-  minMoves = size * size - 1;
+  min = size * size - 1;
   let moves = ["AB", "AC", "BC"];
   let moves2 = ["AC", "AB", "BC"];
   if (size % 2 == 0) {
-    for (let i = 0, j = 0; i < size; i++, j++) {
+    for (let i = 0, j = 0; i < min; i++) {
+      j = j > 2 ? (j = 0) : j++;
       console.log(moves[j]);
-      if (j == 2) j = 0;
     }
-    //algorith 1 AB AC BC Until C tower is complete
+    //algorith  AB AC BC Until C tower is complete
   } else {
-    for (let i = 0, j = 0; i < size; i++, j++) {
+    for (let i = 0, j = 0; i < min; i++, j++) {
+      j = j > 2 ? (j = 0) : j++;
       console.log(moves2[j]);
-      if (j == 2) j = 0;
     }
-    //algorith 1 AC AB BC Until C tower is complete
+    //algorith  AC AB BC Until C tower is complete
   }
 }

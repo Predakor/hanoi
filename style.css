@@ -1,11 +1,15 @@
-html,
-body {
+* {
   margin: 0%;
   padding: 0;
   box-sizing: border-box;
+}
+html,
+body {
   background-color: #005f73;
+  font-size: 16px;
 }
 
+/* Main Game Window */
 .field {
   background: black;
   width: 80vw;
@@ -27,10 +31,12 @@ body {
 }
 .block {
   background-color: red;
-  width: 200px;
-  height: 50px;
+  width: 16%;
+  height: 8%;
+  border-radius: 15px;
 }
 
+/* Stats and buttons  */
 .stats-bar {
   width: 80vw;
   height: 10vh;
@@ -39,30 +45,53 @@ body {
   align-items: center;
   justify-content: left;
 }
-.stats-bar > div {
-  width: 18%;
-  background-color: #003049;
-  font-size: 1.4rem;
-  font-weight: 500;
-  border-radius: 1rem;
+.left,
+.right {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.left {
+  width: 60%;
+  gap: 1.5vw;
+  padding-left: 0%;
+  justify-content: left;
+}
+.right {
+  width: 40%;
+  gap: 2vh;
+  justify-content: right;
+}
+.button {
+  width: 30%;
+  border-radius: 10px;
+  max-height: 100%;
+  background-color: #002438;
+  color: orange;
+
+  font-size: 2.5rem;
   text-align: center;
-  color: #f48c06;
-  transition: all 0.4s ease-in;
-}
-.stats-bar > .button {
-  margin: 1%;
-  width: 15%;
-  margin-left: 0%;
   user-select: none;
+  transition: all 0.3s ease-in;
 }
-.stats-bar > .button:hover {
+
+.button:hover {
   background-color: #003d5d;
   transition: all 0.3s ease-out;
 }
-.button:nth-child(4) {
-  margin-left: 20%;
-}
+
 .stats-bar > .button:active {
   background-color: #002438;
   transition: all 0.3s ease-out;
+}
+#counter {
+  width: 15%;
+  background-color: #002438;
+  color: orange;
+  font-size: 2rem;
+  text-align: center;
 }

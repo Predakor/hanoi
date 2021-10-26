@@ -16,22 +16,24 @@
       <div class="tower"></div>
     </div>
     <div class="stats-bar">
-      <div class="button" onclick="reset()"><p>Reset</p></div>
-      <div class="button" onclick="solution()"><p>Solution</p></div>
-      <div class="button" onclick="change()"><p>Change</p></div>
-      <input
-        type="number"
-        id="hanoiNum"
-        maxlength="1"
-        max="9"
-        min="1"
-        value="3"
-      />
+      <div class="left">
+        <div class="button" onclick="reset()"><p>Reset</p></div>
+        <div class="button" onclick="solution()"><p>Solution</p></div>
+        <div class="button" onclick="change()"><p>Change</p></div>
+        <input
+          type="number"
+          id="hanoiNum"
+          maxlength="1"
+          max="9"
+          min="1"
+          value="3"
+        />
+      </div>
 
-      <div class="button" onclick="Change"><p>Back</p></div>
+      <div class="right">
+        <div class="button" onclick="Change"><p>Back</p></div>
 
-      <div class="moves-counter">
-        <p id="counter">0/0</p>
+        <div id="counter">0/0</div>
       </div>
     </div>
   </body>
