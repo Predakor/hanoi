@@ -38,13 +38,13 @@ function generate(n, start) {
     blocks.push(block);
   }
   size = blocks.length;
-  updateMovesCounter();
+  resetCounter();
 }
 
 function reset() {
   currentBlock = 0;
   moves = 0;
-  updateMovesCounter();
+  resetCounter();
   while (historyPanel.firstChild) {
     historyPanel.removeChild(historyPanel.firstChild);
   }
@@ -90,10 +90,24 @@ function check() {
     target.prepend(currentBlock);
     moves++;
     currentBlock = "";
-    counter.innerText = moves + "/" + minMoves;
-
+    updateCounter();
     addMove(startTower, towerToLetter(target));
-    if (towers[2].childNodes.length == size) alert("You win");
+    checkWin();
+  }
+}
+function checkWin() {
+  if (towers[2].childNodes.length == size) alert("You win");
+}
+
+function back() {
+  if (historyPanel.lastChild != null) {
+    let tekst = historyPanel.lastChild.innerText;
+    let currentTower = letterToTower(tekst.charAt(5));
+    let oldTower = letterToTower(tekst.charAt(3));
+    oldTower.prepend(currentTower.firstChild);
+    moves--;
+    historyPanel.removeChild(historyPanel.lastChild);
+    updateCounter();
   }
 }
 
@@ -103,14 +117,28 @@ function addMove(_startTower, _endTower) {
   currentMove.classList.add("history-row");
   historyPanel.appendChild(currentMove);
 }
-function updateMovesCounter() {
+function resetCounter() {
   minMoves = 2 ** size - 1;
   counter.innerText = "0/" + minMoves;
+}
+function updateCounter() {
+  counter.innerText = moves + "/" + minMoves;
 }
 function towerToLetter(_tower) {
   if (_tower == towers[0]) return "A";
   if (_tower == towers[1]) return "B";
   if (_tower == towers[2]) return "C";
+}
+function letterToTower(_letter) {
+  switch (_letter) {
+    case "A":
+      return towers[0];
+    case "B":
+      return towers[1];
+    case "C":
+      return towers[2];
+    default:
+  }
 }
 //=================solution section======================//
 function solution() {
